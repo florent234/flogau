@@ -1,0 +1,40 @@
+
+{% extends 'layout.html.twig' %}
+
+{%  block main %}
+
+<div id="wrap">
+    <div id="formCon">
+    <form method="post" id="formConnexion" class="col-md-12">
+
+        <h2 id="h2FormConnexion">Bienvenue</h2>
+
+            <div>
+                <label class="sr-only" for="username">Identifant :   </label>
+                <input class="inputConnexion form-control-plaintext" type="text" name="_username" id="username"  placeholder="Pseudo"><br>
+            </div>
+
+            <div>
+                <label class="sr-only" for="password">Mot de passe : </label>
+                <input type="password" name="_password" id="password" class="inputConnexion form-control-plaintext" placeholder="Mot de passe">
+            </div>
+
+        <button class="btnConnexion" type="submit">Connexion</button>
+
+    </form>
+    </div>
+    <div id="divSouvenir">
+        <label id="lblRemember">Se souvenir de moi</label><input  type="checkbox" id="remember_me" name="_remember_me" checked><br>
+    </div>
+    <p id="pMdpOublier"><a id="aMdpOublier" href="{{ path('mdp_oublier') }}">mot de passe oublié ?</a></p>
+</div>
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block title %}Login{% endblock %}
