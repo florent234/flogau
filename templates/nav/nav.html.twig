@@ -2,15 +2,12 @@
 <div id="nav">
 
 
-    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-        <a class="aMenu" href="{{ path('home') }}">Accueil</a>
-        <a class="aMenu" href="{{ path('logout') }}">Se Déconnecter</a><br>
 
-            {% if is_granted('ROLE_ADMIN') %}
-          <!--      <a class="aMenu" href="">Administrateur</a>   -->
-            {% endif %}
-    {% else %}
-            <a class="aMenu" href="{{ path('connection') }}">Se connecter</a>
-    {% endif %}
+        <a class="aMenu" href="{{ path('home') }}">Accueil</a>
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <a class="aMenu" href="{{ path('logout') }}">Se Déconnecter</a><br>
+        {% else %}
+        <a class="aMenu" href="{{ path('connection') }}">Se connecter</a>
+        {% endif %}
 </div>
 

@@ -1,0 +1,26 @@
+{% extends 'layout.sortie.html.twig' %}
+
+{% block main %}
+    <table>
+        <tr>
+            <th>Campus</th>
+            <th>Actions</th>
+        </tr>
+        {% for camp in campus %}
+            <tr>
+             {% if(camp.campusId!=id) %}
+                <td>{{ camp.nomCampus }}</td>
+                <td>Modifier Supprimer</td>
+             {% elseif(camp.campusId==id) %}
+                 {{ form_start(formCampus) }}
+                 <td>{{ form_widget(formCampus) }}</td>
+                 <td><button type="submit" name="submit" id="submit">Modifier</button></td>
+                 {{ form_end(formCampus) }}
+            {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
+
+{% block title %}Campus{% endblock %}

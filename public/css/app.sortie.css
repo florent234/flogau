@@ -1,7 +1,9 @@
 body{
     margin: 0;
+
     color: #1B2631;
     font-family: Tahoma;
+
     background-color: #F2F3F4;
 }
 
@@ -15,7 +17,7 @@ a:hover{
     color: white;
 }
 
-input,.btnConnexion{
+input,button{
     padding: 5px 10px;
     border-radius: 0;
     border: none;
@@ -24,14 +26,14 @@ input,.btnConnexion{
     outline: none;
 }
 
-.btnConnexion{
+button{
     background: #E74C3C;
     color: white;
     transition: 0.2s;
 }
 
 
-.btnConnexion:hover{
+button:hover{
     background: #F4D03F;
     color: white;
 }
@@ -53,6 +55,7 @@ header{
 }
 
 #nav{
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,6 +73,9 @@ header{
     background-color: #E74C3C;
     color: white;
 }
+#ah1Layout:hover{
+    color:#E74C3C;
+}
 
 /*////////////////////connection///////////////////*/
 
@@ -82,6 +88,7 @@ header{
 }
 
 #formConnexion{
+
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -121,94 +128,110 @@ header{
 
 /*//////////////////:accueil/////////////////////*/
 
-#divAccueil{
-    margin-right: 20%;
-    margin-left: 20%;
-    text-align: center;
+#divFiltre{
+    color: white;
+    margin-top: 50px;
+    background-color:#1B2631;
 }
 
-#divSite2, #divSite, #divCV {
-    text-align: center;
-    padding: 5px 10px;
-    border-radius: 0;
-    border: none;
+#formFiltre{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+#form1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#form2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+}
+
+#b1{
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+#b2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+
+#b6{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+
+}
+
+#btnFiltre{
+    margin-left: 16px;
+}
+/*///////////////////////tableau accueil////////////*/
+
+table{
+    margin-top: 50px;
+    border-collapse: collapse;
+}
+th,td{
+    border: 1px solid #1B2631;
+    padding: 5px;
+}
+tbody>tr>td>a{
+    background-color: #E74C3C;
+    padding: 3px;
+    transition: 0.2s;
+}
+
+tbody>tr>td>a:hover{
+    background-color: #F4D03F;
+    color: white;
+}
+
+#creerSortie{
+    width: 150px;
     margin: 10px auto;
-    position: relative;
-    width: 300px;
-    height: 400px;
-    float: left;
+    padding: 10px 20px;
     background: #E74C3C;
     color: white;
     transition: 0.2s;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
-#divSite:hover, #divSite2:hover, #divCV:hover{
-    background: #F4D03F;
+#creerSortie:hover{
+    background-color:#F4D03F;
     color: white;
 }
-/*////////////////////CV/////////////////////////////*/
 
-#introCv{
-    margin-top: 30px;
-    position: static;
-}
-#introGauche{
-    width: 85%;
-    float: left;
-    position: relative;
-}
-#introDroite{
-    margin-top:50px;
-    margin-bottom: 50px;
-    width:15%;
-    float: left;
-    position: relative;
-}
-#titreCv{
-    text-align: center;
-}
-#sousTitreCv{
-    text-align: center;
-    margin-bottom: 20px;
-}
-#pIntroCv{
-    text-align: justify;
-    margin-left: 20%;
-    margin-right: 20%;
+/*/////////////////modifier mon profil///////////*/
+
+#container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#bodyCv{
-    margin-left: 15%;
-    margin-right: 15%;
+#container>div>input,button{
+    display: block;
 }
-        /*liste compétence*/
-#cDroite{
-    width: 40%;
-    margin-left: 10%;
-    float: left;
-    position: relative;
-}
-#cGauche{
-    margin-right: 10%;
-    float: left;
-    width: 40%;
-    position: relative;
-    margin-bottom: 60px;
-}
-#competence{
-    position: static;
 
+#container>div>input{
+    float: left;
 }
-.titreH3{
-    margin-top:20px;
-    margin-bottom: 20px;
-}
-.liste1{
-    margin-bottom:30px;
-}
-/*///////////////////////////////////////////////////*/
 /*////////////////administrateur/////////////////////*/
 
 .divAdmin{

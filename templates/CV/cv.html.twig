@@ -1,0 +1,74 @@
+{% extends 'layout.html.twig'%}
+
+
+{%  block main %}
+<div id="introCv">
+    <div id="introGauche">
+        <h1 id="titreCv"><strong>Curriculum Vitae de Mr Florent GAUTRON</strong></h1>
+         <h3 id="sousTitreCv"><strong>Développeur WEB et WEB Mobile</strong></h3>
+         <p id="pIntroCv">Après plusieurs années d'expérience dans le commerce, je me suis reconvertis dans le Développement informatique.
+        Une formation diplômante m’a permis d'acquérir toutes les connaissances techniques requises et de les appliquer dans un cadre au plus juste des attentes professionnelles.
+        Je suis prêt à apprendre de nouveaux langages de programmation pour m’adapter à vos pratiques.
+        Je vous soumets donc ma candidature au service de votre entreprise.</p>
+    </div>
+    <div id="introDroite">
+        <p>2 Ter rue du prunella<br>
+        86360 Montamisé<br>
+        06 74 47 12 77<br>
+        florent.gautron@gmail.com<br>
+        31 ans<br>
+        Permis B et véhicule</p><br>
+    </div>
+</div>
+<div id="bodyCv" >
+    <h3 class="titreH3"><strong>Compétences Informatiques</strong></h3>
+
+    <div id="competence">
+        <div id="cDroite">
+            <ul id="listeDroite">
+             <li>Langages : Java, PHP 7, XML, PL/SQL, HTML5, CSS, Javascript</li>
+             <li>Environnements : Eclipse, Netbeans, Android studio, PhpStorm, Visual Studio</li>
+             <li>Frameworks : JavaSE et EE(Tomcat), Symfony 3 (WAMP, LAMP ou XAMP),<br> mobile avec Android, Boostrap, JQuery</li>
+            </ul>
+        </div>
+
+        <div id="cGauche">
+            <ul id="listeGauche">
+                <li>CMS : Wordpress</li>
+                <li>ORM : Doctrine</li>
+                <li>Méthodes : Modélisation des données (Oracle CDM) et Méthode de développement Agile (Scrum), UML</li>
+                <li>Bases de données : SQLServer, Oracle, MySQL</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3 class="titreH3"><strong>Formations</strong></h3>
+    <p>ENI, Niort, Titre niveau 5 (BAC+2) <strong>Développeur Web et Web Mobile</strong> – Fini, Examen final en Septembre 2020
+    </p>
+    <p>AFC, Poitiers, <strong>BTS Management des Unités Commerciales</strong> par alternance - 2010
+    </p>
+
+    <h3 class="titreH3"><strong>Expérences</strong></h3>
+    <ul>
+        <li class="liste1">2020 <strong>Développement d’un site Web avec un CMS</strong>, CRITT Informatique, Chasseneuil-du-Poitou
+            <ul><li>Wordpress, SQL Server, Javascript, HTML, CSS, phpMyAdmin</li></ul></li>
+        <li class="liste1">2020 <strong>Projet Développement d’une application avec Java EE</strong>, site d’enchère en ligne
+            <ul><li>SQL Server, JAVA EE, HTML, CSS, Tomcat, JDBC, JQuery</li></ul></li>
+        <li class="liste1">2020 <strong>Projet Développement d’une application WEB</strong>, site d’organisation de sortie
+            <ul><li>PHP, Symfony, HTML, CSS, SQL, Bootstrap, modèle de Template Twig</li></ul></li>
+        <li class="liste1">Jan 2019 - Juil 2019 <strong>Responsable Clientèle</strong> Groupe NRJ Globale, Poitiers
+            <ul><li>Vente de solution de communication Radio, Digital et Evénementielle auprès d’entreprises</li></ul></li>
+        <li class="liste1">Sept 2015-Sept 2018 <strong>Gérant d’entreprise</strong>, Location de véhicules Connectés, Poitiers
+            <ul><li>Gestion d’entreprise (Management, Marketing, Administratif, Comptabilité, Partenariat, Fidélisation)</li></ul></li>
+        <li class="liste1">Déc 2011-Mai 2015 <strong>Vendeurs automobiles</strong></li>
+        <li class="liste1">Sept 2010-Nov 2011 <strong>Serveur en restaurant</strong>, Londres</li>
+    </ul>
+
+
+    <h3 class="titreH3"><strong>Langues</strong></h3>
+
+    <p>Anglais : Lu, parlé et écrit couramment<br>
+        Notion en Espagnol et Langue des Signes</p>
+</div>
+{% endblock %}
+{% block title %}Accueil{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'layout.sortie.html.twig' %}
+
+{% block main %}
+    <div class="col d-none d-md-block">
+        <h1>Afficher une sortie</h1>
+    </div>
+    <div class="d-block d-md-none">
+        <h3><img src="{{ asset('photos/Local/') ~'24730e81feb5acfc65d93c6dd9ec8487.png' }} " width="35" alt=""><a class="aMenu" href="{{ path('accueil') }}">  Sortir.com</a></h3>
+    </div>
+<div>
+    <div>
+        <label>Nom de la sortie :</label>{{ sortie.nomSortie }} <br>
+        <label>Date et heure de la sortie :</label>{{ sortie.dateHeure|date("m/d/Y") }} <br>
+        <label>Date limite d'inscription :</label>{{ sortie.dateLimiteInscription|date("m/d/Y") }} <br>
+        <label>Nombre de places :</label>{{ sortie.nbplaces }} <br>
+        <label>Durée :</label>{{ sortie.duree }} <br>
+    </div>
+    <div>
+        <label>Description et infos :</label> {{ sortie.description }} <br>
+        <label>Campus :</label>    {{ sortie.campus.nomCampus }} <br>
+        <label>Rue :</label> {{ sortie.rue }} <br>
+        <label>Code Postal :</label> {{ sortie.codePostal }} <br>
+
+        {% if sortie.etat == "Annulée" %}
+        <label>Motif d'annulation :</label> {{ sortie.motifAnnulation }}
+        {% endif %}
+    </div>
+</div>
+
+    <div class="col d-none d-md-block">
+        <h3>Listes des participants inscrits :</h3>
+    </div>
+    <div class="d-block d-md-none">
+        <h4>Listes des participants inscrits :</h4>
+    </div>
+{% if sortie.inscrie is not empty %}
+        {% for user in tableauInscrie %}
+            <table class="inscries tableauSortie">
+                <thead>
+                <tr>
+                    <th>  Pseudo  </th>
+                    <th>  Nom  </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{user.username}}</td>
+                    <td>{{ user.prenom }} {{ user.nom }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="d-block d-md-none">
+            </div>
+        {% endfor %}
+{% endif %}
+
+{% endblock %}

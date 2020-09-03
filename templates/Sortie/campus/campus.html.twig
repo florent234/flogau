@@ -1,0 +1,24 @@
+{% extends 'layout.sortie.html.twig' %}
+
+{% block main %}
+    <table>
+        <tr>
+            <th>Campus</th>
+            <th>Actions</th>
+        </tr>
+        {% for camp in campus %}
+            <tr>
+                <td>{{ camp.nomCampus }}</td>
+                <td><a href="{{ path('campus_modifier', {'id': camp.campusId}) }}">Modifier</a>
+                    <a href="{{ path('campus_supprimer', {'id': camp.campusId}) }}">Supprimer</a></td>
+            </tr>
+        {% endfor %}
+        {{ form_start(formCampus) }}
+        <td>{{ form_widget(formCampus) }}</td>
+        <td><button type="submit" name="submit" id="submit">Ajouter</button></td>
+        {{ form_end(formCampus) }}
+    </table>
+
+{% endblock %}
+
+{% block title %}Campus{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'layout.sortie.html.twig' %}
+
+{% block main %}
+    <h1>Modifier !!!!!!</h1>
+        {{ form_start(formSortie) }}
+        {{ form_widget(formSortie) }}
+        <button type="submit" id="save" name="save">Enregister</button>
+        <button type="submit" id="submit" name="submit">Publier</button>
+        <button type="reset" id="reset" name="reset">Annuler</button>
+
+        {{ form_end(formSortie) }}
+
+{% endblock %}

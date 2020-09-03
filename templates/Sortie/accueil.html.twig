@@ -1,0 +1,112 @@
+{% extends 'layout.sortie.html.twig'%}
+
+
+{%  block main %}
+
+    <!-- Parti uniquement visible sur smartphone -->
+<div class="d-block d-md-none">
+    <table class="tableauSortie">
+        <h3>Mes Sorties :</h3>
+        <thead>
+        <tr>
+            <th>Nom de la sortie</th>
+            <th >Date de la sortie</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for sortie in sorties %}
+        <tr>
+            <td align="center"><a href="{{ path('sortie_afficher', {'id':sortie.sortieId }) }}">{{ sortie.nomSortie }} </a></td>
+            <td align="center">{{ sortie.dateHeure|date("d/m/Y H") }}h   </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+    <!--Parti uniquement visible sur tablette et ordinateur -->
+
+    <!-- ////////////////////////  Filtre  ///////////////////////////////////-->
+
+
+<div id="divFiltre" >
+    <br><h3>Filtrer les sorties</h3>
+
+        <div id="form1">
+            <div id="b1">
+                <label for="search"> Nom de la sortie:</label>
+                <input id="search" name="search" type="text">
+            </div>
+
+        <div id="b2">
+            <label>Entre : </label>
+            <input name="dateDebut" type="date">
+            <label>et : </label>
+            <input name="dateFin"  type="date">
+        </div>
+
+            <div id="b6">
+               <label>Campus</label>
+               <select id="selecCampus" name="selectCampus"  >
+                   {% for camp in campus %}
+                       <option value="{{ camp.nomCampus }}" >{{ camp.nomCampus }}</option>
+                   {% endfor %}
+               </select><br>
+            </div>
+
+            <div id="b4" class="filtre_3 col-md-3">
+                <button name="rechercher">Rechercher</button>
+            </div>
+        </div>
+
+        <div id="form2">
+            <!-- /////////////    Les Checkbox  //////////////////////////// -->
+                <input type="checkbox" class="ib6" id="organisateur" name="organisateur" {{ organisateurCheck }} ><label>Sorties dont je suis l'organisateur/trice</label><br>
+                <input type="checkbox" class="ib6" id="inscrit" name="inscrit" {{ inscritCheck }} ><label>Sorties auxquelles je suis inscrit/e</label><br>
+                <input type="checkbox" class="ib6" id="pasInscrit" name="pasInscrit"{{ pasInscritCheck}} ><label>Sorties auxquelles je ne suis pas inscrit/e</label><br>
+                <input type="checkbox" class="ib6" id="passees" name="passees" {{ passeesCheck }} ><label>Sorties passées</label>
+        </div>
+ <br><br>
+
+    <!-- ///////////////// Le tableau des Sorties /////-->
+</div>
+        <table class="tableauSortie col-md-12 col-lg-12 d-none d-md-block">
+            <thead>
+            <tr>
+                <th>Nom de la sortie</th>
+                <th >Date de la sortie</th>
+                <th >Clôture</th>
+                <th>Inscrits/Places</th>
+                <th>Etat</th>
+                <th>Inscrit</th>
+                <th>Organisateur</th>
+                <th>Actions</th>
+                {% if app.user.administrateur==1 %}
+                    <th>Actions Administrateur</th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+
+
+            {% for sortie in sorties2|filter(sortie=> dateDebut<sortie.dateHeure|date("Y-m-d") and dateFin>sortie.dateHeure|date("Y-m-d")) %}
+                    {% include 'sortie/accueilBody.html.twig' %}
+            {% endfor %}
+
+            {% for sortie in sorties3|filter(sortie=>  sortie.organisateur.username != app.user.username and dateDebut<sortie.dateHeure|date("Y-m-d") and dateFin>sortie.dateHeure|date("Y-m-d")) %}
+                    {% include 'sortie/accueilBody.html.twig' %}
+            {% endfor %}
+
+            {% for sortie in sorties4|filter(sortie=> sortie.organisateur.username != app.user.username and dateDebut<sortie.dateHeure|date("Y-m-d") and dateFin>sortie.dateHeure|date("Y-m-d")) %}
+                    {% include 'sortie/accueilBody.html.twig' %}
+            {% endfor %}
+
+
+            </tbody>
+        </table><br>
+
+    <div class="col d-none d-md-block">
+        <a id="creerSortie" href="{{ path('sortie_creation') }}">Créer une sortie</a>
+    </div><br>
+{% endblock %}
+{% block title %}Accueil{% endblock %}
