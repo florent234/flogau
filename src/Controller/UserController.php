@@ -3,42 +3,50 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use Cassandra\Type\UserType;
+use App\Form\InscriptionType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user", name="user")
+     * @Route("/inscription", name="inscription");
      */
-    public function index()
-    {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/UserController.php',
-        ]);
-    }
-    private function createCreateForm(User $user)
-    {
-        $form = $this->createForm(UserType::class, $user, array(
-            'action' => $this->generateUrl('user_create'),
-            'method' => 'POST',
-        ));
+    public function inscription(EntityManagerInterface $em,
+                                Request $request,
+                                UserPasswordEncoderInterface $encoder){
 
-        return $form;
+        $utilisateur = new User();
+        $utilisateur->setDateCreation(new \DateTime());
+
+        $formInscription = $this->createForm(InscriptionType::class, $utilisateur);
+
+        $formInscription->handleRequest($request);
+
+        if( $formInscription->isSubmitted() && $formInscription->isValid()){
+
+            $file = $utilisateur->getIdPhoto();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('upload_directory'),$fileName);
+            $utilisateur->setIdPhoto($fileName);
+
+            $hashed = $encoder->encodePassword($utilisateur, $utilisateur->getPassword());
+            $utilisateur->setPassword($hashed);
+
+            $em->persist($utilisateur);
+            $em->flush();
+
+           // return $this->redirectToRoute('home',['id'=>$utilisateur->getId(), "utilisateur"=>$utilisateur]);
+            return $this->redirectToRoute('home',[]);
+
+        }
+
+        return $this->render('User/inscription.html.twig',
+            ["formInscription"=>$formInscription->createView()]);
     }
 
-    private function createEditForm(User $user)
-    {
-        // Note the change of the first parameter of createForm
-        $form = $this->createForm(UserType::class, $user, array(
-            'action' => $this->generateUrl('projects_update', array('id' => $user->getId())),
-            'method' => 'PUT',
-        ));
-
-        return $form;
-    }
 }

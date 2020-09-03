@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig'%}
+
+
+{%  block main %}
+
+    <!-- Parti uniquement visible sur smartphone -->
+<div class="d-block d-md-none">
+
+</div>
+    <!--Parti uniquement visible sur tablette et ordinateur -->
+
+    <!-- ////////////////////////  Filtre  ///////////////////////////////////-->
+
+<div id="divAccueil">
+
+        <button id="divCV">
+            <h1> CV</h1>
+            <p>
+                Voici mon CV
+            </p>
+        </button>
+
+
+        <button id="divSite">
+            <h1> Site Sortir.com</h1>
+            <p>
+                Je vous présente une de mes créations, un site internet en PHP avec le Frameword Symfony
+            </p>
+        </button>
+
+
+        <button id="divSite2">
+            <h1> Site Sortir.com</h1>
+            <p>
+                Je vous présente une de mes créations, un site internet en PHP avec le Frameword Symfony
+            </p>
+        </button>
+
+</div>
+
+{% endblock %}
+{% block title %}Accueil{% endblock %}

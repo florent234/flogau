@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <div id="formProfil">
+        <h2 id="h2Inscription">Inscription</h2>
+        <div>
+             {{ form_start(formInscription) }}
+            {{ form_widget(formInscription) }}
+        <div id="btnProfil">
+            <button type="submit" id="submit" name="submit">Enregistrer</button>
+            <button type="reset" id="reset" name="reset">Annuler</button><br><br>
+        </div>
+    </div>
+    {{ form_end(formInscription) }}
+{% endblock %}

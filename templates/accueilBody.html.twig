@@ -1,0 +1,47 @@
+
+                <tr>
+                    <td align="center">{{ sortie.nomSortie }}</td>
+                    <td align="center">{{ sortie.dateHeure|date("d/m/Y H") }}h   </td>
+                    <td align="center">{{ sortie.dateLimiteInscription|date("d/m/Y") }}</td>
+                    {% set sortieInscrit = sortie.inscrie|split('-') %}
+                    <td align="center">{{ (sortieInscrit|length)-1 }}/{{ sortie.nbplaces }}</td>
+                    <td align="center">{{ sortie.etat }}</td>
+                    {%if(app.user.username in sortie.inscrie) %}
+                        <td align="center">X</td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+
+
+                    <td align="center"><a href="{{ path('profil_afficher', {'id':sortie.sortieId }) }}">{{ sortie.organisateur.username }} </a></td>
+                    <td align="center">
+
+                        {%  if (sortie.etat == "Ouverte" or sortie.etat =="Annulée") %}
+                        <a href="{{ path('sortie_afficher', {'id':sortie.sortieId }) }}">Afficher</a>
+                        {% endif %}
+
+                        {%if(app.user.username in sortie.inscrie and sortie.dateLimiteInscription|date("Y-m-d")> "now"|date("Y-m-d") ) %}
+                            <a href="{{ path('sortie_desinscription', {'id':sortie.sortieId }) }}" >Se désinscrire</a>
+                        {% elseif((sortieInscrit|length) < sortie.nbplaces) and (app.user.username!=sortie.organisateur.username) and sortie.etat =="Ouverte" %}
+                            <a href="{{ path('sortie_inscription', {'id':sortie.sortieId }) }}">S'inscrire</a>
+                        {% endif %}
+                        {% if app.user.username==sortie.organisateur.username %}
+                            {% if (sortie.dateLimiteInscription|date("Y-m-d")> "now"|date("Y-m-d") ) %}
+                                <a href="{{ path('sortie_modifier', {'id':sortie.sortieId }) }}" >Modifier</a>
+                            {%  endif %}
+                            {% if (sortie.etat=="En création") %}
+                                <a href="{{ path('sortie_publier', {'id':sortie.sortieId }) }}" >Publier</a>
+                            {% endif %}
+                        {% endif %}
+                    </td>
+                    {% if app.user.administrateur ==1 %}
+                    <td align="conter">
+                        {% if (sortie.dateLimiteInscription|date("Y-m-d")> "now"|date("Y-m-d") ) %}
+                             <a href="{{ path('sortie_modifier', {'id':sortie.sortieId }) }}" >Modifier</a>
+                        {%  endif %}
+                        {% if (sortie.inscrie is empty and sortie.etat != "Annulée" and sortie.etat != "Fermée") %}
+                           <a href="{{ path('sortie_annuler', {'id':sortie.sortieId }) }}" >Annuler</a>
+                        {% endif %}
+                     {% endif %}
+                    </td>
+                </tr>

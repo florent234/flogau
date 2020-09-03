@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+<div class="divAdmin">
+   <h1 class="adminTitre1">Page Administrateur</h1>
+
+    <h3 class="adminTitre">Utilisateurs :</h3>
+    <label>Afficher les utilisateurs : </label><button class="btnAdministrateur" ><a href="{{ path('profils') }}">Utilisateurs</a></button><br>
+    <label>Créer un nouveau utilisateur : </label><button class="btnAdministrateur" ><a href="{{ path('inscription') }}">Inscription</a></button><br>
+    <label>Ajouter des utilisateurs par fichier CSV : </label ><button class="btnAdministrateur"><a href="{{ path('CSV_afficher') }}">CSV</a></button><br>
+
+
+
+ <br><h3 class="adminTitre">Gestions des fichiers :</h3>
+    <label>Bibliotheque de photo: </label><button class="btnAdministrateur" ><a href="{{ path('photo_afficher') }}">Bibliotheque</a></button>
+
+
+
+    <br><h3 class="adminTitre">Gestions des lieux :</h3>
+    <label>Gestions des Campus : </label><button class="btnAdministrateur" ><a  href="{{ path('campus') }}">Campus</a></button><br>
+    <label>Gestions des Campus : </label><button class="btnAdministrateur" ><a  href="{{ path('villes') }}">Villes</a></button>
+</div>
+{% endblock %}
+
+{% block title %}Administrateur{% endblock %}

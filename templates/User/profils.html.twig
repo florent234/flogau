@@ -1,0 +1,58 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    {% for utilisateur in utilisateurs %}
+        <article id="articleProfils">
+            {% if utilisateur.username != app.user.username %}
+                <h3 id="titreProfil">Profil de {{ utilisateur.username }}</h3>
+            {% else %}
+                <h3 id="titreProfil">Votre Profile !!</h3>
+            {% endif %}
+
+            {% if utilisateur.nomPhoto is empty %}
+                <div id="photoProfils">
+                    <br><br>
+                </div>            {% else %}
+                <div id="photoProfils">
+              <br><br>  <img src="{{ asset('photos/') ~utilisateur.nomPhoto }} " width="150" alt="">
+                </div>
+            {% endif %}
+            <div id="profils">
+                <label>Pseudo :           </label>{{ utilisateur.username }} <br>
+                <label>Nom :              </label>{{ utilisateur.nom }} <br>
+                <label>Prenom :           </label>{{ utilisateur.prenom}} <br>
+                <label>Téléphone :        </label>{{ utilisateur.telephone }} <br>
+                <label>Email :            </label>{{ utilisateur.email }} <br>
+                <label>Id Utilisateur :   </label>{{ utilisateur.UserId }} <br>
+                <label>Campus :           </label>{{ utilisateur.campus.nomCampus }} <br>
+                <label>Administrateur :   </label>
+                {% if utilisateur.administrateur==1 %}
+                    Oui
+                {% else %}
+                    Non
+                {% endif %}<br>
+                <label>Actif :            </label>
+                {% if utilisateur.actif==1 %}
+                    Oui
+                {% else %}
+                    Non
+                {% endif %}<br>
+                <label>Password :         </label>{{ utilisateur.password}} <br>
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="actionsProfils">
+                <button class="btnAdministrateur"><a href="{{ path('profil_modifier', {'id':utilisateur.userId}) }}">Modifier</a></button>
+                {% if utilisateur.actif==1 %}
+                    <button class="btnAdministrateur"><a href="{{ path('profil_bloquer', {'id':utilisateur.userId}) }}">Bloquer</a></button>
+                {% else %}
+                    <button class="btnAdministrateur"><a href="{{ path('profil_bloquer', {'id':utilisateur.userId}) }}">Débloquer</a></button>
+                {% endif %}
+                <button class="btnAdministrateur"><a href="{{ path('profil_supprimer', {'id':utilisateur.userId}) }}">Supprimer</a></button>
+            </div>
+        </article><br><br>
+    {% endfor %}
+{% endblock %}

@@ -7,9 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
 /**
  * @UniqueEntity(fields={"email"})
- * @ORM\Table(name="utilisateur")
+ * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User implements UserInterface
@@ -76,7 +77,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getId()
+    public function getUserId()
     {
         return $this->id;
     }
@@ -169,7 +170,7 @@ class User implements UserInterface
      */
     public function setTelephone($telephone)
     {
-        $this->prenom = $telephone;
+        $this->telephone = $telephone;
 
         return $this;
     }
@@ -188,7 +189,7 @@ class User implements UserInterface
      */
     public function setPassword($password)
     {
-        $this->prenom = $password;
+        $this->password = $password;
 
         return $this;
     }
@@ -207,7 +208,7 @@ class User implements UserInterface
      */
     public function setDateCreation($dateCreation)
     {
-        $this->prenom = $dateCreation;
+        $this->dateCreation = $dateCreation;
 
         return $this;
     }
@@ -226,7 +227,7 @@ class User implements UserInterface
      */
     public function setAdministrateur($administrateur)
     {
-        $this->prenom = $administrateur;
+        $this->administrateur = $administrateur;
 
         return $this;
     }
@@ -245,7 +246,7 @@ class User implements UserInterface
      */
     public function setActif($actif)
     {
-        $this->prenom = $actif;
+        $this->actif = $actif;
 
         return $this;
     }
@@ -264,20 +265,24 @@ class User implements UserInterface
      */
     public function setIdPhoto($idPhoto)
     {
-        $this->prenom = $idPhoto;
+        $this->idPhoto = $idPhoto;
 
         return $this;
     }
 
-
-
-
     /**
-     * @inheritDoc
+     * @return mixed
      */
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        if($this->administrateur==1)
+        {
+            return ["ROLE_ADMIN"];
+        }
+        else
+        {
+            return ["ROLE_USER"];
+        }
     }
 
     /**

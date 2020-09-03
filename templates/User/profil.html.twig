@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <h2 id="h2Profil"> Modifier Profil</h2>
+    <div id="container">
+        <div id="photoProfils">
+            <img src="{{ asset('photos/') ~photo }} " width="150" alt="">
+        </div>
+        <div class="formProfil form-inline">
+            {{ form_start(formInscription) }}
+            {% if app.user.administrateur==0 %}
+                {{ form_widget(formInscription.administrateur, {'disabled' : true, 'attr' : { 'hidden' : true}} ) }}
+                {{ form_widget(formInscription.actif, {'disabled' : true, 'attr' : { 'hidden' : true}}) }}
+            {% endif  %}
+            {{ form_widget(formInscription) }}
+
+            <div id="btnProfil">
+                <button type="submit" id="submit" name="submit">Enregistrer</button>
+                <button type="reset" id="reset" name="reset">Annuler</button><br><br>
+            </div>
+                {{ form_end(formInscription) }}
+        </div>
+    </div>
+
+
+{% endblock %}

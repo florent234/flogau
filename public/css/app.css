@@ -1,0 +1,180 @@
+body{
+    margin: 0;
+    color: #1B2631;
+    font-family: Tahoma;
+    background-color: #F2F3F4;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+input,.btnConnexion{
+    padding: 5px 10px;
+    border-radius: 0;
+    border: none;
+    width: 150px;
+    margin: 10px auto;
+    outline: none;
+}
+
+.btnConnexion{
+    background: #E74C3C;
+    color: white;
+    transition: 0.2s;
+}
+
+
+.btnConnexion:hover{
+    background: #F4D03F;
+    color: white;
+}
+
+#h1Layout{
+    color: white;
+}
+
+
+/*/////////////////header-nav//////////////////////*/
+
+header{
+    background-color: #1B2631;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.aMenu{
+    padding: 4px;
+    transition: 0.2s;
+    margin: 0px 4px 0px 4px;
+
+}
+
+.aMenu:hover{
+    background-color: #E74C3C;
+    color: white;
+}
+
+/*////////////////////connection///////////////////*/
+
+#wrap{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#formConnexion{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#formConnexion>input{
+    background: white;
+}
+
+#h2FormConnexion{
+    margin-bottom: 40px;
+    color: #1B2631;
+}
+
+#lblRemember{
+    color: #1B2631;
+
+}
+#remember_me{
+    width: 20px;
+    position: relative;
+    top: 2px;
+}
+
+#aMdpOublier{
+    color: #1B2631;
+}
+
+#pMdpOublier:hover{
+    border-bottom: 1px solid #1B2631;
+}
+#formConnexion>div>input{
+    border: 1px solid #1B2631;
+}
+
+/*//////////////////:accueil/////////////////////*/
+
+#divAccueil{
+    margin-right: 20%;
+    margin-left: 20%;
+    text-align: center;
+}
+
+#divSite2, #divSite, #divCV {
+    padding: 5px 10px;
+    border-radius: 0;
+    border: none;
+    margin: 10px auto;
+    position: relative;
+    width: 300px;
+    height: 400px;
+    float: left;
+    background: #E74C3C;
+    color: white;
+    transition: 0.2s;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#divSite:hover, #divSite2:hover, #divCV:hover{
+    background: #F4D03F;
+    color: white;
+}
+
+/*////////////////administrateur/////////////////////*/
+
+.divAdmin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/*//////////////inscription///////////////////////*/
+
+#formProfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#formProfil>input,button{
+    display: block;
+}
+
+#formProfil>input{
+    float: left;
+}
+
+
+
+

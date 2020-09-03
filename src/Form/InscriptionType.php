@@ -16,10 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class InscriptionType extends AbstractType
 {
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
@@ -36,8 +33,14 @@ class InscriptionType extends AbstractType
                 'second_options'=>array('label'=>'Répéter mot de passe')])
             ->add('administrateur', ChoiceType::class, ['choices'=> ['Oui'=>true, 'Non'=>false]])
             ->add('actif', ChoiceType::class, ['choices'=> ['Oui'=>true, 'Non'=>false]])
-            ->add('nomPhoto', FileType::class, array('label'=>'Choisissez une photo'))
+            ->add('IdPhoto', FileType::class, array('label'=>'Choisissez une photo'))
             ;
 
+    }
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => User::class
+        ]);
     }
 }
