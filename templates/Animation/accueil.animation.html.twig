@@ -1,0 +1,48 @@
+{% extends 'layout.animation.html.twig'%}
+
+
+{%  block main %}
+
+    <!-- Parti uniquement visible sur smartphone -->
+<div class="d-block d-md-none">
+
+</div>
+    <!--Parti uniquement visible sur tablette et ordinateur -->
+
+    <!-- ////////////////////////  Filtre  ///////////////////////////////////-->
+
+
+<div  id="divAccueilAnim">
+
+    <h2 id="phrase1">Prêt à attraper<br> la taupe !</h2>
+    <h4 id="phrase2">Pour jouer, tape la taupe<br> et évite les bombes !</h4>
+
+    <div id="divImgA">
+        <div id="img1"><img id="taupe" src="../public/photos/Animation/taupe.png" alt="taupe"><img id="taupe2" src="../public/photos/Animation/taupe.png" alt="taupe2">
+            <img id="tonneau" src="../public/photos/Animation/tonneau1.png" alt="tonneau">
+        </div>
+        <div id="img2"><img id="taupe3" src="../public/photos/Animation/taupe.png" alt="taupe3">
+            <img id="tonneau2" src="../public/photos/Animation/tonneau1.png" alt="tonneau2">
+        </div>
+        <div id="img3"><img id="bombe" src="../public/photos/Animation/bombe3.png" alt="bombe">
+        </div>
+    </div><br>
+
+    <div id="divPhrase3"><p id="phrase3">2 Taupes : 20 Points</p></div>
+    <div id="divPhrase4"><p id="phrase4">1 Taupe : 10 Points</p></div>
+    <div id="divPhrase5"><p id="phrase5">Attention aux bombes : - 10 Points</p></div>
+
+    <div id="play"><a href="{{ path('animation_play') }}"><img id="play_buttom" src="../public/photos/Animation/play-button.png" alt="play_buttom"></a>
+    </div>
+
+
+   <div id="divTrefle"><img id="trefle" src="../public/photos/Animation/trefle.png" alt="trefle"></div>
+    <div id="divTrefle2"><img id="trefle2" src="../public/photos/Animation/trefle.png" alt="trefle"></div>
+    <div id="divTrefle3"><img id="trefle3" src="../public/photos/Animation/trefle.png" alt="trefle"></div>
+    <div id="divTrefle4"><img id="trefle4" src="../public/photos/Animation/trefle.png" alt="trefle"></div>
+    <div id="divTrefle5"><img id="trefle5" src="../public/photos/Animation/trefle.png" alt="trefle"></div>
+
+</div>
+
+{% endblock %}
+{% block title %}Accueil{% endblock %}

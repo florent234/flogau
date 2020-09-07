@@ -126,6 +126,11 @@ header{
     margin-left: 20%;
     text-align: center;
 }
+#divAccueil > p > h1{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    vertical-align: center;
+}
 
 #divSite2, #divSite, #divCV {
     text-align: center;
@@ -134,10 +139,10 @@ header{
     border: none;
     margin: 10px auto;
     position: relative;
-    width: 300px;
-    height: 400px;
+    width: 200px;
+    height: 300px;
     float: left;
-    background: #E74C3C;
+    background: #1B2631;
     color: white;
     transition: 0.2s;
     margin-left: 10px;
@@ -145,7 +150,7 @@ header{
 }
 
 #divSite:hover, #divSite2:hover, #divCV:hover{
-    background: #F4D03F;
+    background: #E74C3C;
     color: white;
 }
 /*////////////////////CV/////////////////////////////*/

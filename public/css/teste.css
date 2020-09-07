@@ -1,0 +1,68 @@
+body {
+    background-color: #CECECE;
+    margin: 0;
+    padding: 0;
+}
+#fondJeu {
+    z-index: 2;
+    position: absolute;
+    background-color: #582900;
+    border-top: 5px solid #22780F;
+    width: 400px;
+    height: 100px;
+    /*arrondis les angles*/
+    border-radius: 5px;
+}
+
+.taupe {
+    z-index: 1;
+    position: absolute;
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+}
+
+#difficulte {
+    font-family: Comic Sans MS, cursive;
+    font-size: 35px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 150px;
+    color:#1E7FCB;
+    width: 340px;
+}
+
+div#btDifficulte
+{
+    top:2%;
+    left:49%;
+    position:absolute;
+}
+
+#score {
+    font-family: Comic Sans MS, cursive;
+    font-size: 70px;
+    width: 340px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 150px;
+    color:#1E7FCB;
+    text-shadow: 0 1px 0 #eee,
+    0 2px 0 #e5e5e5,
+    -1px 3px 0 #C8C8C8,
+    -1px 4px 0 #C1C1C1,
+    -2px 5px 0 #B9B9B9,
+    -2px 6px 0 #B2B2B2,
+    -2px 7px 2px rgba(0,0,0, 0.6),
+    -2px 7px 8px rgba(0,0,0, 0.2),
+    -2px 7px 45px rgba(0,0,0, 0.4);
+}
+
+input{
+    color:#1E7FCB;
+    font-weight:bold;
+    cursor:s-resize;
+    text-align:center;
+    margin:auto;
+    display:block;
+}

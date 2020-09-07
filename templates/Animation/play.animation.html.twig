@@ -1,0 +1,71 @@
+{% extends 'layout.animation.html.twig'%}
+
+
+{%  block main %}
+
+
+    <!--Parti uniquement visible sur tablette et ordinateur -->
+
+   <div id="fondJeu">
+       <img id="coeur1" class="" src="../public/photos/Animation/coeur.png" alt="coeur">
+       <img id="coeur2" class="" src="../public/photos/Animation/coeur.png" alt="coeur">
+       <img id="coeur3" class="" src="../public/photos/Animation/coeur.png" alt="coeur">
+
+
+
+    <h2 id="phrasePlay">Tapper la taupe !!</h2>
+       <div id="score">Score: 0</div>
+
+
+    <div id="PdivImgA">
+
+        <div id="Pimg1">
+            <img id="tonneauP" class="" src="../public/photos/Animation/tonneau1.png" alt="tonneau">
+            <img id="bombeP" class="bombe" src="../public/photos/Animation/bombe3.png" alt="bombeP">
+            <img id="taupeP" class="taupe" src="../public/photos/Animation/taupe.png" alt="taupeP">
+            <img id="taupeArriere" class="taupeArriere" src="../public/photos/Animation/taupe.png" alt="2taupeP">
+        </div>
+        <div id="Pimg2">
+            <img id="tonneau2P" class="" src="../public/photos/Animation/tonneau1.png" alt="tonneau2">
+            <img id="bombe2P" class="bombe" src="../public/photos/Animation/bombe3.png" alt="bombe2P">
+            <img id="taupe2P" class="taupe" src="../public/photos/Animation/taupe.png" alt="taupe2P">
+            <img id="taupeArriere2" class="taupeArriere" src="../public/photos/Animation/taupe.png" alt="2taupe2P">
+        </div>
+        <div id="Pimg3">
+            <img id="tonneau3P" class="" src="../public/photos/Animation/tonneau1.png" alt="tonneau3">
+            <img id="bombe3P" class="bombe" src="../public/photos/Animation/bombe3.png" alt="bombe3P">
+            <img id="taupe3P" class="taupe" src="../public/photos/Animation/taupe.png" alt="taupe3P">
+            <img id="taupeArriere3" class="taupeArriere" src="../public/photos/Animation/taupe.png" alt="2taupe3P">
+        </div>
+    </div>
+    <div id="PdivImgB">
+        <div id="Pimg4">
+            <img id="tonneau4P" class="" src="../public/photos/Animation/tonneau1.png" alt="tonneau4">
+            <img id="bombe4P" class="bombe" src="../public/photos/Animation/bombe3.png" alt="bombe4P">
+            <img id="taupe4P" class="taupe" src="../public/photos/Animation/taupe.png" alt="taupe4P">
+            <img id="taupeArriere4" class="taupeArriere" src="../public/photos/Animation/taupe.png" alt="2taupe4P">
+        </div>
+        <div id="Pimg5">
+            <img id="tonneau5P" class="" src="../public/photos/Animation/tonneau1.png" alt="tonneau5">
+            <img id="bombe5P" class="bombe" src="../public/photos/Animation/bombe3.png" alt="bombe5P">
+            <img id="taupe5P" class="taupe" src="../public/photos/Animation/taupe.png" alt="taupe5P">
+            <img id="taupeArriere5" class="taupeArriere" src="../public/photos/Animation/taupe.png" alt="2taupe5P">
+        </div>
+        <div id="Pimg6">
+            <img id="tonneau6P" class="" src="../public/photos/Animation/tonneau1.png" alt="tonneau6">
+            <img id="bombe6P" class="bombe" src="../public/photos/Animation/bombe3.png" alt="bombe6P">
+            <img id="taupe6P" class="taupe" src="../public/photos/Animation/taupe.png" alt="taupe6P">
+            <img id="taupeArriere6" class="taupeArriere" src="../public/photos/Animation/taupe.png" alt="2taupe6P">
+        </div>
+
+    </div>
+       <h1 id="gameover" >GAME OVER</h1>
+       <a href="{{ path('animation_play') }}"><p id="recommencer"> Recommancer</p></a>
+       <a href="{{ path('home') }}"><p id="retour">Retour</p></a>
+       <h1 id="depart">3</h1>
+       <img id="taupeFinal" class="" src="../public/photos/Animation/taupe.png" alt="">
+
+
+   </div>
+{% endblock %}
+{% block title %}Accueil{% endblock %}

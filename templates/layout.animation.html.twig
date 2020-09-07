@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Animation{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/css/app.animation.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/JavaScript/Animation.js"></script>
+
+
+</head>
+<body>
+    <header>
+
+        <div class="titre">
+            <h1 id="h1Layout"><a id="ah1Layout" href="{{ path('home') }}">Site Personnel Mr Florent GAUTRON</a> : Animation 2D</h1>
+        </div>
+
+        <div class="nav">
+            {% include 'Animation/nav.animation.html.twig' %}
+        </div>
+
+    </header>
+    <main>
+        {% block main %}
+
+        {% endblock %}
+    </main>
+    <!--<footer>
+        &copy; 20{{ "now"|date("y") }}
+
+    </footer>-->
+</body>
+</html>
