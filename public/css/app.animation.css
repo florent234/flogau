@@ -24,7 +24,7 @@
     margin-bottom: 20px;
     text-align: center;
     color:white;
-    font-family: Comic Sans MS, cursive;
+    font-family: Comic Sans MS, sans-serif;
 }
 #phrase2{
     z-index: 4;
@@ -33,7 +33,7 @@
     text-align: center;
     margin-bottom: 20px;
     color:white;
-    font-family: Comic Sans MS, cursive;
+    font-family: Comic Sans MS, sans-serif;
 }
 #phrase3{
     z-index: 2;
@@ -41,7 +41,7 @@
     font-size: 14px;
     text-align: center;
     color:white;
-    font-family: Comic Sans MS, cursive;
+    font-family: Comic Sans MS, sans-serif;
 }
 #phrase4{
     z-index: 2;
@@ -49,7 +49,7 @@
     font-size: 14px;
     text-align: center;
     color:white;
-    font-family: Comic Sans MS, cursive;
+    font-family: Comic Sans MS, sans-serif;
 }
 #phrase5{
     z-index: 2;
@@ -57,7 +57,7 @@
     font-size: 14px;
     text-align: center;
     color:white;
-    font-family: Comic Sans MS, cursive;
+    font-family: Comic Sans MS, sans-serif;
 }
 
 #divPhrase3{
@@ -182,7 +182,7 @@
     text-align: center;
     margin-bottom: -20px;
     color:white;
-    font-family: Comic Sans MS, cursive;
+    font-family: Comic Sans MS, sans-serif;
 }
 
 /*////////////////////////////////////////////////////// RAJOUT DE TESTE ////////////////////////////*/
@@ -218,7 +218,7 @@
     color:white;
   position: relative;
     top :-70px; left : 220px;
-    font-family: Comic Sans MS, cursive;
+    font-family: Comic Sans MS, sans-serif;
     font-size: 25px;
     width: 340px;
     margin-right: auto;
@@ -478,7 +478,7 @@ input{
     margin-bottom: 20px;
     text-align: center;
     color:white;
-    font-family: Comic Sans MS, cursive;
+    font-family: Comic Sans MS, sans-serif;
     margin-left:auto;
     margin-right:auto;
     animation-name: depart;
@@ -516,12 +516,12 @@ input{
 }
 #gameover{
     position: relative;
-    top: -300px;
+    top: -270px;
     z-index: 20;
     text-shadow: 1px 1px 2px black;
     text-align: center;
     color:white;
-    font-family: Comic Sans MS, cursive;
+    font-family: Comic Sans MS, sans-serif;
 
     animation-name: gameover;
     animation-fill-mode: forwards;
@@ -549,7 +549,7 @@ input{
     color:white;
     font-size: 30px;
     opacity: 0;
-    font-family: Comic Sans MS, cursive;
+    font-family: Comic Sans MS, sans-serif;
     animation-name: question;
     animation-fill-mode: forwards;
     animation-duration: 2s;
@@ -566,7 +566,7 @@ input{
     display:inline;
     margin:auto;
     opacity: 0;
-    font-family: Comic Sans MS, cursive;
+    font-family: Comic Sans MS, sans-serif;
     animation-name: question;
     animation-fill-mode: forwards;
     animation-duration: 2s;
@@ -655,7 +655,13 @@ header{
     background-color: #E74C3C;
     color: white;
 }
-
+.aMenu:hover{
+    background-color: #E74C3C;
+    color: white;
+}
+#ah1Layout:hover{
+    color:#E74C3C;
+}
 /*////////////////////connection///////////////////*/
 
 #wrap{

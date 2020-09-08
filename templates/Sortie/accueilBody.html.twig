@@ -13,7 +13,7 @@
                     {% endif %}
 
 
-                    <td align="center">Organisateur !!??</td>
+                    <td align="center">{{ sortie.organisateur.username }}</td>
                     <td align="center">
 
                         {%  if (sortie.etat == "Ouverte" or sortie.etat =="Annulée") %}

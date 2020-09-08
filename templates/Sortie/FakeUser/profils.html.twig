@@ -1,0 +1,54 @@
+{% extends 'layout.sortie.html.twig' %}
+
+{% block main %}
+    {% for fakeUser in utilisateurs %}
+        <article id="articleProfils">
+                <h3 id="titreProfil">Profil de {{ fakeUser.username }}</h3>
+
+            {% if fakeUser.IdPhoto is empty %}
+                <div id="photoProfils">
+                    <br><br>
+                </div>            {% else %}
+                <div id="photoProfils">
+              <br><br>  <img src="{{ asset('photos/') ~fakeUser.IdPhoto }} " width="150" alt="">
+                </div>
+            {% endif %}
+            <div id="profils">
+                <label>Pseudo :           </label>{{ fakeUser.username }} <br>
+                <label>Nom :              </label>{{ fakeUser.nom }} <br>
+                <label>Prenom :           </label>{{ fakeUser.prenom}} <br>
+                <label>Téléphone :        </label>{{ fakeUser.telephone }} <br>
+                <label>Email :            </label>{{ fakeUser.email }} <br>
+                <label>Id Utilisateur :   </label>{{ fakeUser.UserId }} <br>
+                <label>Campus :           </label>{{ fakeUser.campus.nomCampus }} <br>
+                <label>Administrateur :   </label>
+                {% if fakeUser.administrateur==1 %}
+                    Oui
+                {% else %}
+                    Non
+                {% endif %}<br>
+                <label>Actif :            </label>
+                {% if fakeUser.actif==1 %}
+                    Oui
+                {% else %}
+                    Non
+                {% endif %}<br>
+                <label>Password :         </label>{{ fakeUser.password}} <br>
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="actionsProfils">
+                <button class="btnAdministrateur"><a href="{{ path('fake_profil_modifier', {'id':fakeUser.userId}) }}">Modifier</a></button>
+                {% if fakeUser.actif==1 %}
+                    <button class="btnAdministrateur"><a href="{{ path('fake_profil_bloquer', {'id':fakeUser.userId}) }}">Bloquer</a></button>
+                {% else %}
+                    <button class="btnAdministrateur"><a href="{{ path('fake_profil_bloquer', {'id':fakeUser.userId}) }}">Débloquer</a></button>
+                {% endif %}
+                <button class="btnAdministrateur"><a href="{{ path('fake_profil_supprimer', {'id':fakeUser.userId}) }}">Supprimer</a></button>
+            </div>
+        </article><br><br>
+    {% endfor %}
+{% endblock %}

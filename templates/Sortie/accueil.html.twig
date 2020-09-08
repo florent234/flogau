@@ -31,27 +31,31 @@
 
 <div id="divFiltre" >
     <br><h3>Filtrer les sorties</h3>
+    <form method="post" action="{{ path('accueil') }}" id="formFiltre" name="filtre" class="filtre">
 
-        <div id="form1">
+    <div id="form1">
             <div id="b1">
-                <label for="search"> Nom de la sortie:</label>
-                <input id="search" name="search" type="text">
+                <label> Nom de la sortie:
+                    <input name="search" type="text">
+                </label>
             </div>
 
-        <div id="b2">
-            <label>Entre : </label>
-            <input name="dateDebut" type="date">
-            <label>et : </label>
-            <input name="dateFin"  type="date">
-        </div>
+            <div id="b2">
+                <label id="labelEntre">Entre :
+                    <input name="dateDebut" type="date">
+                </label>
+                <label>et :
+                    <input name="dateFin"  type="date">
+                </label>
+            </div>
 
             <div id="b6">
-               <label>Campus</label>
+               <label for="selecCampus">Campus
                <select id="selecCampus" name="selectCampus"  >
                    {% for camp in campus %}
                        <option value="{{ camp.nomCampus }}" >{{ camp.nomCampus }}</option>
                    {% endfor %}
-               </select><br>
+               </select></label><br>
             </div>
 
             <div id="b4" class="filtre_3 col-md-3">
@@ -61,12 +65,12 @@
 
         <div id="form2">
             <!-- /////////////    Les Checkbox  //////////////////////////// -->
-                <input type="checkbox" class="ib6" id="organisateur" name="organisateur" {{ organisateurCheck }} ><label>Sorties dont je suis l'organisateur/trice</label><br>
-                <input type="checkbox" class="ib6" id="inscrit" name="inscrit" {{ inscritCheck }} ><label>Sorties auxquelles je suis inscrit/e</label><br>
-                <input type="checkbox" class="ib6" id="pasInscrit" name="pasInscrit"{{ pasInscritCheck}} ><label>Sorties auxquelles je ne suis pas inscrit/e</label><br>
-                <input type="checkbox" class="ib6" id="passees" name="passees" {{ passeesCheck }} ><label>Sorties passées</label>
+            <label class="label" for="organisateur">Sorties dont je suis l'organisateur/trice<input type="checkbox" class="ib6" id="organisateur" name="organisateur" {{ organisateurCheck }} ></label><br>
+            <label class="label" for="inscrit">Sorties auxquelles je suis inscrit/e<input type="checkbox" class="ib6" id="inscrit" name="inscrit" {{ inscritCheck }} ></label><br>
+            <label class="label" for="pasInscrit">Sorties auxquelles je ne suis pas inscrit/e<input type="checkbox" class="ib6" id="pasInscrit" name="pasInscrit"{{ pasInscritCheck}} ></label><br>
+            <label class="label" for="passees">Sorties passées</label><input type="checkbox" class="ib6" id="passees" name="passees" {{ passeesCheck }} >
         </div>
- <br><br>
+    </form><br><br>
 
     <!-- ///////////////// Le tableau des Sorties /////-->
 </div>

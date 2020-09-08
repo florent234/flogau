@@ -1,4 +1,4 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout.sortie.html.twig' %}
 
 {% block main %}
     {% for utilisateur in utilisateurs %}
@@ -9,12 +9,12 @@
                 <h3 id="titreProfil">Votre Profile !!</h3>
             {% endif %}
 
-            {% if utilisateur.nomPhoto is empty %}
+            {% if utilisateur.IdPhoto is empty %}
                 <div id="photoProfils">
                     <br><br>
                 </div>            {% else %}
                 <div id="photoProfils">
-              <br><br>  <img src="{{ asset('photos/') ~utilisateur.nomPhoto }} " width="150" alt="">
+              <br><br>  <img src="{{ asset('photos/') ~utilisateur.IdPhoto }} " width="150" alt="">
                 </div>
             {% endif %}
             <div id="profils">
@@ -24,7 +24,6 @@
                 <label>Téléphone :        </label>{{ utilisateur.telephone }} <br>
                 <label>Email :            </label>{{ utilisateur.email }} <br>
                 <label>Id Utilisateur :   </label>{{ utilisateur.UserId }} <br>
-                <label>Campus :           </label>{{ utilisateur.campus.nomCampus }} <br>
                 <label>Administrateur :   </label>
                 {% if utilisateur.administrateur==1 %}
                     Oui

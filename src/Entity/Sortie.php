@@ -60,9 +60,8 @@ class Sortie extends AbstractController
 
 
     /**
-     * @var Sortie
      * @ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="sorties")
-     * @ORM\JoinColumn(nullable=true, name="Campus", referencedColumnName="campus_id")
+     * @ORM\JoinColumn(nullable=true, name="campus", referencedColumnName="campus_id")
      */
     private $campus;
 
@@ -219,7 +218,7 @@ class Sortie extends AbstractController
     /**
      * @param mixed $campus
      */
-    public function setVille($campus)
+    public function setCampus($campus)
     {
         $this->campus = $campus;
         return $this;

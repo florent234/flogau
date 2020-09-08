@@ -2,18 +2,12 @@
 
 {% block main %}
 <div class="divAdmin">
-   <h1 class="adminTitre1">Page Administrateur</h1>
+   <h1 class="adminTitre1">Fausse Page Administrateur</h1>
 
     <h3 class="adminTitre">Utilisateurs :</h3>
-    <label>Afficher les utilisateurs : </label><button class="btnAdministrateur" >Utilisateurs</button><br>
-    <label>Créer un nouveau utilisateur : </label><button class="btnAdministrateur" ><a href="{{ path('inscription') }}">Inscription</a></button><br>
-    <label>Ajouter des utilisateurs par fichier CSV : </label ><button class="btnAdministrateur">CSV</button><br>
-
-
-
- <br><h3 class="adminTitre">Gestions des fichiers :</h3>
-    <label>Bibliotheque de photo: </label><button class="btnAdministrateur" >Bibliotheque</button>
-
+    <label>Afficher les utilisateurs : </label><br><p> (Pour la tenu du site cette accès donne uniquement la possibiité de manipuler de faux compte)</p><button class="btnAdministrateur" ><a href="{{ path('fake_profils') }}">Utilisateurs</a></button><br>
+    <label>Créer un nouveau utilisateur : </label><br><p> (Pour la tenu du site cette accès donne uniquement la possibiité de créé de faux compte)</p><button class="btnAdministrateur" ><a href="{{ path('fake_inscription') }}">Inscription</a></button><br>
+    <label>Ajouter des utilisateurs par fichier CSV : </label ><button class="btnAdministrateur">CSV (Désactivé pour le moment)</button><br>
 
 
     <br><h3 class="adminTitre">Gestions des lieux :</h3>

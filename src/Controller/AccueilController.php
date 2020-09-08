@@ -226,8 +226,13 @@ class AccueilController extends AbstractController
 
         return $mots;
     }
+    /**
+     * @Route("/sortir.com/sortie_administrateur", name="sortie_administrateur");
+     */
+    public function fakeAdministrateur()
+    {
 
-
-
-
+        return $this->render('Sortie/administrateur.html.twig', [
+        ]);
+    }
 }
