@@ -48,7 +48,7 @@ class SortieRepository extends ServiceEntityRepository
 
     ////// Récupérer Sorties en fonction de l'ORGANISATEUR ////
     ///  Et OUVERTE //////
-    public function findAllByDateOrganisateur($user)
+    public function findAllByDateOrganisateur($userID)
     {
         $qb = $this->_em->createQueryBuilder();
         $qb->select('s')
@@ -56,8 +56,9 @@ class SortieRepository extends ServiceEntityRepository
             ->where('s.dateHeure > :datecourant')
             ->andWhere('s.organisateur = :organisateur')
             ->setParameter('datecourant', new \DateTime('now') )
-            ->setParameter('organisateur', $user)
+            ->setParameter('organisateur', $userID)
             ->orderBy('s.dateHeure', 'DESC');
+
             return $qb->getQuery()
                 ->getResult();
     }
@@ -86,12 +87,12 @@ class SortieRepository extends ServiceEntityRepository
 
 
     ////// Sorties OU je NE suis PAS INSCRI ////////
-    public function findAllByDatePasInscrit($username, $sorties)
+    public function findAllByDatePasInscrit($user, $sorties)
     {
         $array[]=null;
         foreach ($sorties as $sortie)
         {
-            if (!strpos($sortie->getInscrie(), $username)){
+            if (!strpos($sortie->getInscrie(), $user->getUserName())){
                 array_push($array, $sortie->getNomSortie());
             }
         }
@@ -100,8 +101,10 @@ class SortieRepository extends ServiceEntityRepository
             ->from('App\Entity\Sortie', 's')
             ->where('s.dateHeure > :datecourant')
             ->andWhere('s.nomSortie IN (:array)')
+            ->andWhere('s.organisateur != :organisateur')
             ->setParameter('datecourant', new \DateTime('now') )
             ->setParameter('array',  $array )
+            ->setParameter('organisateur', $user->getUserId())
             ->orderBy('s.dateHeure', 'DESC');
         return $qb->getQuery()
             ->getResult();

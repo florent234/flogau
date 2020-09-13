@@ -5,23 +5,7 @@
 
     <!-- Parti uniquement visible sur smartphone -->
 <div class="d-block d-md-none">
-    <table class="tableauSortie">
-        <h3>Mes Sorties :</h3>
-        <thead>
-        <tr>
-            <th>Nom de la sortie</th>
-            <th >Date de la sortie</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for sortie in sorties %}
-        <tr>
-            <td align="center"><a href="{{ path('sortie_afficher', {'id':sortie.sortieId }) }}">{{ sortie.nomSortie }} </a></td>
-            <td align="center">{{ sortie.dateHeure|date("d/m/Y H") }}h   </td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+
 
 </div>
     <!--Parti uniquement visible sur tablette et ordinateur -->
@@ -53,7 +37,15 @@
                <label for="selecCampus">Campus
                <select id="selecCampus" name="selectCampus"  >
                    {% for camp in campus %}
-                       <option value="{{ camp.nomCampus }}" >{{ camp.nomCampus }}</option>
+                       {% if camp == app.user.campus %}
+                           <option {{ optionUser }} value="{{ camp.nomCampus }}" >{{ camp.nomCampus }}</option>
+                       {% endif %}
+                       {% if camp != app.user.campus and camp.nomCampus != selectCampus%}
+                           <option value="{{ camp.nomCampus }}" >{{ camp.nomCampus }}</option>
+                       {% endif %}
+                       {% if camp != app.user.campus and camp.nomCampus == selectCampus%}
+                           <option value="{{ camp.nomCampus }}" {{ optionOther }} >{{ camp.nomCampus }}</option>
+                       {% endif %}
                    {% endfor %}
                </select></label><br>
             </div>
@@ -67,17 +59,17 @@
             <!-- /////////////    Les Checkbox  //////////////////////////// -->
             <label class="label" for="organisateur">Sorties dont je suis l'organisateur/trice<input type="checkbox" class="ib6" id="organisateur" name="organisateur" {{ organisateurCheck }} ></label><br>
             <label class="label" for="inscrit">Sorties auxquelles je suis inscrit/e<input type="checkbox" class="ib6" id="inscrit" name="inscrit" {{ inscritCheck }} ></label><br>
-            <label class="label" for="pasInscrit">Sorties auxquelles je ne suis pas inscrit/e<input type="checkbox" class="ib6" id="pasInscrit" name="pasInscrit"{{ pasInscritCheck}} ></label><br>
+            <label class="label" for="pasInscrit">Sorties auxquelles je ne suis pas inscrit/e<input type="checkbox" class="ib6" id="pasInscrit" name="pasInscrit" {{ pasInscritCheck}} ></label><br>
             <label class="label" for="passees">Sorties passées</label><input type="checkbox" class="ib6" id="passees" name="passees" {{ passeesCheck }} >
         </div>
     </form><br><br>
-
     <!-- ///////////////// Le tableau des Sorties /////-->
 </div>
         <table class="tableauSortie col-md-12 col-lg-12 d-none d-md-block">
             <thead>
             <tr>
                 <th>Nom de la sortie</th>
+                <th>Campus de la sortie</th>
                 <th >Date de la sortie</th>
                 <th >Clôture</th>
                 <th>Inscrits/Places</th>
@@ -92,19 +84,33 @@
             </thead>
             <tbody>
 
-
+            <tr><td class="sousTitre" colspan="10">Sorties dont je suis l'organisateur</td></tr>
+            {% if (  organisateurCheck  == "checked=\"checked\"") %}
             {% for sortie in sorties2|filter(sortie=> dateDebut<sortie.dateHeure|date("Y-m-d") and dateFin>sortie.dateHeure|date("Y-m-d")) %}
+                {% include 'sortie/accueilBody.html.twig' %}
+            {% endfor %}
+            {% endif %}
+
+            <tr><td class="sousTitre" colspan="10">Sorties où vous êtes inscrit/e</td></tr>
+            {% if (  inscritCheck  == "checked=\"checked\"") %}
+            {% for sortie in sorties3|filter(sortie=> dateDebut<sortie.dateHeure|date("Y-m-d") and dateFin>sortie.dateHeure|date("Y-m-d")) %}
                     {% include 'sortie/accueilBody.html.twig' %}
             {% endfor %}
+            {% endif %}
 
-            {% for sortie in sorties3|filter(sortie=>  sortie.organisateur.username != app.user.username and dateDebut<sortie.dateHeure|date("Y-m-d") and dateFin>sortie.dateHeure|date("Y-m-d")) %}
+            <tr><td class="sousTitre" colspan="10">Sorties où vous n'êtes pas inscrit/e</td></tr>
+            {% if (  pasInscritCheck  == "checked=\"checked\"") %}
+            {% for sortie in sorties4|filter(sortie=> dateDebut<sortie.dateHeure|date("Y-m-d") and dateFin>sortie.dateHeure|date("Y-m-d")) %}
                     {% include 'sortie/accueilBody.html.twig' %}
             {% endfor %}
+            {% endif %}
 
-            {% for sortie in sorties4|filter(sortie=> sortie.organisateur.username != app.user.username and dateDebut<sortie.dateHeure|date("Y-m-d") and dateFin>sortie.dateHeure|date("Y-m-d")) %}
+            <tr><td class="sousTitre" colspan="10">Sorties Passée</td></tr>
+            {% if (  passeesCheck  == "checked=\"checked\"") %}
+            {% for sortie in sorties5|filter(sortie=> dateDebut<sortie.dateHeure|date("Y-m-d") and dateFin>sortie.dateHeure|date("Y-m-d") ) %}
                     {% include 'sortie/accueilBody.html.twig' %}
             {% endfor %}
-
+            {% endif %}
 
             </tbody>
         </table><br>

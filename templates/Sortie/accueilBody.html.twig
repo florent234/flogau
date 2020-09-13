@@ -1,6 +1,7 @@
 
                 <tr>
                     <td align="center">{{ sortie.nomSortie }}</td>
+                    <td align="center">{{ sortie.campus.nomCampus }}</td>
                     <td align="center">{{ sortie.dateHeure|date("d/m/Y H") }}h   </td>
                     <td align="center">{{ sortie.dateLimiteInscription|date("d/m/Y") }}</td>
                     {% set sortieInscrit = sortie.inscrie|split('-') %}

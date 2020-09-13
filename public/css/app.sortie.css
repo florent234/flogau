@@ -188,6 +188,12 @@ header{
 }
 /*///////////////////////tableau accueil////////////*/
 
+
+.sousTitre{
+    background-color: #1B2631;
+    color: white;
+    text-align: center;
+}
 table{
     margin-top: 50px;
     border-collapse: collapse;

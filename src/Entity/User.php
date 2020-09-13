@@ -72,8 +72,32 @@ class User implements UserInterface
      */
     private $idPhoto;
 
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="utilisateurs")
+     *  @ORM\JoinColumn(nullable=true, name="Campus", referencedColumnName="campus_id")
+     */
+    private $campus;
+
 
     /*///////////////////// GETTER AND SETTER ////////////////////*/
+
+    /**
+     * @return mixed
+     */
+    public function getCampus()
+    {
+        return "Poitiers";
+    }
+
+    /**
+     * @param mixed $campus
+     */
+    public function setCampus($campus)
+    {
+        $this->campus = $campus;
+    }
+
     /**
      * @return mixed
      */

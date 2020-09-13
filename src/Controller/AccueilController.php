@@ -5,7 +5,6 @@ namespace App\Controller;
 
 
 use App\Entity\Campus;
-use App\Entity\Photo;
 use App\Entity\Sortie;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -55,67 +54,60 @@ class AccueilController extends AbstractController
         $inscritCheck="";
         $pasInscritCheck="";
         $passeesCheck="";
+
+        $optionOther="";
+        $optionUser="";
         $search="";
         $submit="";
         $tableauRecherche[]=null;
+
+        $selectCampus="Poitiers";
 
         $campu= new Campus();
 
         $user = $this->getUser();
         $username=$user->getUsername();
+        $userId = $user->getUserId();
 
-
-
-/////// GESTION DES CAMPUS ///////////
-       if(isset($_POST['selectCampus']))
-        {
-            foreach($campus as $camp){
-                if($camp->getNomCampus()==$_POST['selectCampus']){
-                    $campu=$camp;
-                }
-            }
-
-            $sorties = $sortieRepo->findAllByCampusDate($campu);
-            $sorties2=$sorties3=$sorties4=$sorties5=$sorties;
-
-
-                $selectCampus=($_POST['selectCampus']);
-                $optionOther="selected=\"selected\"";
-                $optionUser="";
-
-
-        } else {
-//////////////// Premier passage sur la page ////////////////
-
-                $sorties = null;
-
-
-           $sorties2 = $sortieRepo->findAllByDateOrganisateur($username);
-           $sorties3 = $sortieRepo->findAllByDateInscrit($username, $sortiesAll);
-           $sorties4 = $sortieRepo->findAllByDatePasInscrit($username, $sortiesAll);
-
-
-           $organisateurCheck="checked=\"checked\"";
-           $organisateur="organisateur";
-
-           $inscritCheck="checked=\"checked\"";
-           $inscrit="inscrit";
-
-           $pasInscritCheck="checked=\"checked\"";
-           $pasInscrit="pasInscrit";
-
-            $optionOther="";
-            $optionUser="selected=\"selected\"";
-        }
 
 ///// GESTION DU RESTE DES FILTRES ////////
 
         if(isset($_POST['Rechercher'])){ // si formulaire soumis
 
+            $organisateur="";
+            $inscrit="";
+            $pasInscrit="";
+            $passees="";
+            $organisateurCheck="";
+            $inscritCheck="";
+            $pasInscritCheck="";
+            $passeesCheck="";
+            $optionOther="";
+            $optionUser="";
+
+            /////// GESTION DES CAMPUS ///////////
+            if(isset($_POST['selectCampus']))
+            {
+                foreach($campus as $camp){
+                    if($camp->getNomCampus()==$_POST['selectCampus']){
+                        $campu=$camp;
+                    }
+                }
+
+                $sorties = $sortieRepo->findAllByCampusDate($campu);
+
+                $selectCampus=($_POST['selectCampus']);
+                $optionOther="selected=\"selected\"";
+                $optionUser="";
+
+                //////////////// Premier passage sur la page ////////////////
+            } else {
+                $selectCampus="Poitiers";
+            }
                 $submit="submit";
            ////// RECHERCHE PAR MOT CLE //////////
-              if (isset($_POST['search']) and $_POST['search']!="")
-              {
+            if (isset($_POST['search']) and $_POST['search']!="")
+            {
                   $search="search";
                   $phrase=$_POST['search'];
                     var_dump("boucle search");
@@ -133,7 +125,7 @@ class AccueilController extends AbstractController
                           }
                       }
                   }
-              }
+            }
               ////// DATE DE DEBUT ET DE FIN
             if (isset($_POST['dateDebut']) and $_POST['dateDebut'] != null)
                 {
@@ -144,52 +136,86 @@ class AccueilController extends AbstractController
                 $dateFin=$_POST['dateFin'];
             }
         }
-        //// GESTION DES CHECKBOX ///////
+        if(!isset($_POST['organisateur']) and !isset($_POST['inscrit']) and !isset($_POST['pasInscrit']) and !isset($_POST['passees'])) {
 
-
-        if (isset($_POST['organisateur'])) {
-            $sorties2 = $sortieRepo->findAllByDateOrganisateur($username);
-
-            $organisateurCheck = "checked=\"checked\"";
-            $organisateur = "organisateur";
-        }
-        if (isset($_POST['inscrit']))
-        {
+            //     $sorties = $sortieRepo->findAllByCampusDate($user->getCampus());
+            $sorties2 = $sortieRepo->findAllByDateOrganisateur($userId);
             $sorties3 = $sortieRepo->findAllByDateInscrit($username, $sortiesAll);
+            $sorties4 = $sortieRepo->findAllByDatePasInscrit($user, $sortiesAll);
+            $sorties5 = $sortieRepo->findNull($user->getCampus());
+
+            $selectCampus="Poitiers";
+            $organisateurCheck="checked=\"checked\"";
+            $organisateur="organisateur";
 
             $inscritCheck="checked=\"checked\"";
             $inscrit="inscrit";
-        }
-        if (isset($_POST['pasInscrit']))
-        {
-            $sorties4 = $sortieRepo->findAllByDatePasInscrit($username, $sortiesAll);
 
             $pasInscritCheck="checked=\"checked\"";
             $pasInscrit="pasInscrit";
+
+            $optionOther="";
+            $optionUser="selected=\"selected\"";
         }
+
+        //// GESTION DES CHECKBOX ///////
+
+        if (isset($_POST['organisateur'])) {
+            $sorties2 = $sortieRepo->findAllByDateOrganisateur($userId);
+            $organisateurCheck = "checked=\"checked\"";
+            $organisateur = "organisateur";
+        }
+        if($organisateur !="organisateur"){
+            $sorties2 = null;
+        }
+
+        if (isset($_POST['inscrit']))
+        {
+            $sorties3 = $sortieRepo->findAllByDateInscrit($username, $sortiesAll);
+            $inscritCheck="checked=\"checked\"";
+            $inscrit="inscrit";
+        }
+        if($inscrit != "inscrit"){
+            $sorties3 = null;
+        }
+
+        if (isset($_POST['pasInscrit']))
+        {
+            $sorties4 = $sortieRepo->findAllByDatePasInscrit($user, $sortiesAll);
+            $pasInscritCheck="checked=\"checked\"";
+            $pasInscrit="pasInscrit";
+        }
+        if($pasInscrit != "pasInscrit"){
+            $sorties4 = null;
+        }
+
         if (isset($_POST['passees']))
         {
-            $sorties5 = $sortieRepo->findAllByCampusPassees($selectCampus);
+            $sorties5 = $sortieRepo->findNull($user->getCampus());
             $passeesCheck="checked=\"checked\"";
             $passees="passees";
         }
+        if($passees != "passees"){
+            $sorties5 = null;
+        }
 
+    //    $toutesSorties = $sorties + $sorties2 + $sorties3 + $sorties4 + $sorties5;
 
+    //    $sortieAfficher = array_unique($toutesSorties, SORT_REGULAR);
 
         //// Récupérer la photo profil n°1 ///
-        $photoRepo = $this->getDoctrine()->getRepository(Photo::class);
-        $photo = $photoRepo->find(1);
+   //     $photoRepo = $this->getDoctrine()->getRepository(Photo::class);
+   //    $photo = $photoRepo->find(1);      "photo"=>$photo
 
         return $this->render('sortie/accueil.html.twig', [
-            "sorties"=>$sorties,"sorties2" => $sorties2, "sorties3" =>$sorties3,"sorties4"=>$sorties4 ,
+             "sorties2" => $sorties2, "sorties3" =>$sorties3,"sorties4"=>$sorties4 , "sorties5"=>$sorties5,
             'search'=> $search ,"submit"=> $submit,
             "optionUser"=>$optionUser, "optionOther"=>$optionOther ,
-            "tableauRecherche"=>$tableauRecherche ,
+            "tableauRecherche"=>$tableauRecherche ,"selectCampus"=>$selectCampus ,
             "dateDebut"=>$dateDebut, "dateFin"=>$dateFin,
             "organisateur"=>$organisateur, "inscrit"=>$inscrit, "pasInscrit"=>$pasInscrit, "passees"=>$passees,
             "organisateurCheck"=>$organisateurCheck , "inscritCheck"=>$inscritCheck, "pasInscritCheck"=>$pasInscritCheck, "passeesCheck"=>$passeesCheck,
             "username"=>$username, "campus"=>$campus,
-            "photo"=>$photo
         ]);
     }
 
