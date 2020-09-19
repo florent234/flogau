@@ -1,0 +1,43 @@
+{% extends 'layout.concours.html.twig' %}
+
+{% block main %}
+
+    <div id="divbonAchats">
+        <div id="divBon1">
+            <div id="">
+                <a href="{{path('gagnant', {'id_photo': "coupon1.png" } ) }}" ><img id="photoBon" src="{{ asset('photos/Concours/coupon1.png') }}" alt=""></a>
+            </div>
+            <div id="">
+                <a href="{{path('gagnant', {'id_photo': "coupon2.png" } ) }}"><img id="photoBon" src="{{ asset('photos/Concours/coupon2.png') }}" alt=""></a>
+            </div>
+            <div id="">
+                <a href="{{path('gagnant', {'id_photo': "coupon3.png" } ) }}"><img id="photoBon" src="{{ asset('photos/Concours/coupon3.png') }}" alt=""></a>
+            </div>
+        </div>
+        <div id="divBon2">
+            <div id="">
+                <a href="{{path('gagnant', {'id_photo': "coupon4.png" } ) }}"><img id="photoBon" src="{{ asset('photos/Concours/coupon4.png') }}" alt=""></a>
+            </div>
+            <div id="">
+                <a href="{{path('gagnant', {'id_photo': "coupon5.png" } ) }}"><img id="photoBon" src="{{ asset('photos/Concours/coupon5.png') }}" alt=""></a>
+            </div>
+            <div id="">
+                <a href="{{path('gagnant', {'id_photo': "coupon6.png" } ) }}"><img id="photoBon" src="{{ asset('photos/Concours/coupon6.png') }}" alt=""></a>
+            </div>
+        </div>
+        <div id="divBon3">
+            <div id="">
+                <a href="{{path('gagnant', {'id_photo': "coupon7.png" } ) }}"><img id="photoBon" src="{{ asset('photos/Concours/coupon7.png') }}" alt=""></a>
+            </div>
+            <div id="">
+                <a href="{{path('gagnant', {'id_photo': "coupon8.png" } ) }}"><img id="photoBon" src="{{ asset('photos/Concours/coupon8.png') }}" alt=""></a>
+            </div>
+            <div id="">
+                <a href="{{path('gagnant', {'id_photo': "coupon9.png" } ) }}"><img id="photoBon" src="{{ asset('photos/Concours/coupon9.png') }}" alt=""></a>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

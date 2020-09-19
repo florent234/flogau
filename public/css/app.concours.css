@@ -1,0 +1,374 @@
+body{
+    margin: 0;
+    color: #1B2631;
+    font-family: Tahoma, serif;
+    background-color: #F2F3F4;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+input,.btnConnexion{
+    padding: 5px 10px;
+    border-radius: 0;
+    border: none;
+    width: 150px;
+    margin: 10px auto;
+    outline: none;
+}
+button{
+    padding: 5px 10px;
+    border-radius: 0;
+    border: none;
+    width: 150px;
+    margin: 10px auto;
+    outline: none;
+}
+
+button{
+    background: #E74C3C;
+    color: white;
+    transition: 0.2s;
+}
+
+button:hover{
+    background: #F4D03F;
+    color: white;
+}
+
+#h1Layout{
+    color: white;
+}
+/*///////// INSCRIPTION CONCOURS /////////////*/
+#formClient input[type=text], #formClient input[type=email]{
+    width: 70%;
+}
+#formClient {
+    margin-left: 5px;
+}
+.textClient{
+
+}
+
+.labelClient{
+    width: 15%;
+    margin :2px;
+}
+
+/*/////////////////  Accueil Concours ///////// */
+
+#photoConcours{
+    width: 100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+#divPhotoConcours{
+    margin-top:20px;
+    width: 40%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/*//////////////   bon Achats /////////////////////*/
+
+#divbonAchats{
+    margin-top:20px;
+    width: 70%;
+    margin-left:auto;
+    margin-right:auto;
+}
+#photoBon{
+    width:400px;
+    height: 150px;
+}
+img{
+    margin: 5px;
+}
+#divBon1{
+    display: inline-block;
+}
+#divBon2{
+    display: inline-block;
+}
+#divBon3{
+    display: inline-block;
+}
+
+/*///////////////   GAGNANT   ////////////////////*/
+
+#photoGagnant{
+    text-align:center;
+    width: 100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+#pGagant{
+    text-align:center;
+}
+#divGagnant{
+    width: 50%;
+    margin-left:auto;
+    margin-right:auto;
+}
+#imprimer{
+    text-align: center;
+    margin-top:20px;
+}
+/*
+#retourConcours{
+    padding: 5px 10px;
+    border-radius: 0;
+    border: none;
+    width: 150px;
+    margin: 10px auto;
+    outline: none;
+}
+
+#retourConcours{
+    text-align: center;
+
+    background: #E74C3C;
+    color: white;
+    transition: 0.2s;
+}
+
+
+#retourConcours:hover{
+    background: #F4D03F;
+    color: white;
+}
+*/
+/*
+#retourConcours{
+    color: #1B2631;
+}
+#retourConcours:hover{
+    color: #E74C3C;
+} */
+#bonClient{
+    width: 1080px;
+    height: auto;
+}
+#divQR{
+    margin-bottom: 20px;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/*/////////////////header-nav//////////////////////*/
+
+header{
+    background-color: #1B2631;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.aMenu{
+    padding: 4px;
+    transition: 0.2s;
+    margin: 0px 4px 0px 4px;
+
+}
+
+.aMenu:hover{
+    background-color: #E74C3C;
+    color: white;
+}
+
+/*////////////////////connection///////////////////*/
+
+#wrap{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#formConnexion{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#formConnexion>input{
+    background: white;
+}
+
+#h2FormConnexion{
+    margin-bottom: 40px;
+    color: #1B2631;
+}
+
+#lblRemember{
+    color: #1B2631;
+
+}
+#remember_me{
+    width: 20px;
+    position: relative;
+    top: 2px;
+}
+
+#aMdpOublier{
+    color: #1B2631;
+}
+
+#pMdpOublier:hover{
+    border-bottom: 1px solid #1B2631;
+}
+#formConnexion>div>input{
+    border: 1px solid #1B2631;
+}
+
+/*//////////////////:accueil/////////////////////*/
+
+#divAccueil{
+    margin-right: 20%;
+    margin-left: 20%;
+    text-align: center;
+}
+#divAccueil > p > h1{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    vertical-align: center;
+}
+
+#divSite2, #divSite, #divCV {
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 0;
+    border: none;
+    margin: 10px auto;
+    position: relative;
+    width: 200px;
+    height: 300px;
+    float: left;
+    background: #1B2631;
+    color: white;
+    transition: 0.2s;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#divSite:hover, #divSite2:hover, #divCV:hover{
+    background: #E74C3C;
+    color: white;
+}
+/*////////////////////CV/////////////////////////////*/
+
+#introCv{
+    margin-top: 30px;
+    position: static;
+}
+#introGauche{
+    width: 85%;
+    float: left;
+    position: relative;
+}
+#introDroite{
+    margin-top:50px;
+    margin-bottom: 50px;
+    width:15%;
+    float: left;
+    position: relative;
+}
+#titreCv{
+    text-align: center;
+}
+#sousTitreCv{
+    text-align: center;
+    margin-bottom: 20px;
+}
+#pIntroCv{
+    text-align: justify;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#bodyCv{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+        /*liste compétence*/
+#cDroite{
+    width: 40%;
+    margin-left: 10%;
+    float: left;
+    position: relative;
+}
+#cGauche{
+    margin-right: 10%;
+    float: left;
+    width: 40%;
+    position: relative;
+    margin-bottom: 60px;
+}
+#competence{
+    position: static;
+
+}
+.titreH3{
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+.liste1{
+    margin-bottom:30px;
+}
+/*///////////////////////////////////////////////////*/
+/*////////////////administrateur/////////////////////*/
+
+.divAdmin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/*//////////////inscription///////////////////////*/
+
+#formProfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#formProfil>input,button{
+    display: block;
+}
+
+#formProfil>input{
+    float: left;
+}
+
+
+/*//////////////////// NAV //////////////*/
+
+#ah1Layout:hover{
+    color:#E74C3C;
+}
+
+
+

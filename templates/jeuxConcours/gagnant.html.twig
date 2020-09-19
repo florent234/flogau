@@ -1,0 +1,13 @@
+{% extends 'layout.concours.html.twig' %}
+
+{% block main %}
+        <div id="divGagnant">
+            <img id="photoGagnant" src="{{ asset('photos/Concours/') ~ photo }}" alt="">
+            <h2 id="imprimer">Votre bon de commande s'imprime !!!</h2>
+            <p id="pGagant"> OU </p>
+            <div id="divQR">
+                <a href='https://www.unitag.io/qrcode'><img src='https://www.unitag.io/qreator/generate?crs=Ppv8rOENN3V1lAwTz82zPgJCeRt23RLSE9SsU4N%252BrxqX4N9KhizbkATejaCcMBan9jqG%252FxftIvOPi1JF2kaypDFUcwc2XEJ8YaYpyfIdC%252BDUYxT4%252BY1uSshdMusAfnxGPfMNQSYrvQhkbMILoTLAyg%253D%253D&crd=fhOysE0g3Bah%252BuqXA7NPQ87MoHrnzb%252BauJLKoOEbJsrlgxtH9Jje6M2dYott0JKy5aPvOdLosi1RhYweZPNYag%253D%253D' alt='QR Code'/></a>
+            </div>
+            <button class="btnConnexion"><a href="{{path('concours') }}"  id="retourConcours">RETOUR</a></button>
+        </div>
+{% endblock %}

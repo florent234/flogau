@@ -12,7 +12,7 @@
     <!-- ////////////////////////  Filtre  ///////////////////////////////////-->
 
 <div id="divAccueil">
-
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
         <a href="{{ path('cv') }}" id="divCV">
             <h1> CV</h1>
             <p>
@@ -27,7 +27,7 @@
                 Je vous présente une de mes créations, un site internet en PHP avec le Frameword Symfony
             </p>
         </a>
-
+    {% endif %}
 
         <a  href="{{ path('animation') }}" id="divSite2">
             <h1> Jeux de taupe</h1>
@@ -35,6 +35,13 @@
                 Le but du jeux est de tapper la taupe quand elle sort des tonneaux, attention vous n'avez que 3 vies !
             </p>
         </a>
+
+    <a  href="{{ path('concours') }}" id="divSite2">
+        <h1> Jeux Concours</h1>
+        <p>
+            Le but, après une inscription, il suffit de choisir la promotion que l'on souhaite et l'imprimer
+        </p>
+    </a>
 
 </div>
 
