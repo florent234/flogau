@@ -144,4 +144,18 @@ class SortieRepository extends ServiceEntityRepository
         return $qb->getQuery()
             ->getResult();
     }
+    public function findPasse($campus)
+    {
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('s')
+            ->from('App\Entity\Sortie', 's')
+            ->andwhere('s.dateHeure < :datejour')
+            ->andWhere('s.campus = :campus')
+            ->setParameter('datejour', new \DateTime('now') )
+            ->setParameter('campus', $campus)
+            ->orderBy('s.dateHeure', 'DESC');
+
+        return $qb->getQuery()
+            ->getResult();
+    }
 }

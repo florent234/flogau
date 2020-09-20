@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Controller;
-
 
 use App\Entity\Campus;
 use App\Entity\Sortie;
@@ -40,7 +38,6 @@ class AccueilController extends AbstractController
                 $em->persist($sortie);
                 $em->flush();
             }
-
         }
 
     //// Variable pour manipulation du filte
@@ -55,15 +52,15 @@ class AccueilController extends AbstractController
         $pasInscritCheck="";
         $passeesCheck="";
 
-        $optionOther="";
-        $optionUser="";
+
         $search="";
         $submit="";
         $tableauRecherche[]=null;
 
-        $selectCampus="Poitiers";
-
+        $selectCampus="";
         $campu= new Campus();
+        $optionOther="";
+        $optionUser="";
 
         $user = $this->getUser();
         $username=$user->getUsername();
@@ -73,7 +70,6 @@ class AccueilController extends AbstractController
 ///// GESTION DU RESTE DES FILTRES ////////
 
         if(isset($_POST['Rechercher'])){ // si formulaire soumis
-
             $organisateur="";
             $inscrit="";
             $pasInscrit="";
@@ -84,6 +80,7 @@ class AccueilController extends AbstractController
             $passeesCheck="";
             $optionOther="";
             $optionUser="";
+            $submit="submit";
 
             /////// GESTION DES CAMPUS ///////////
             if(isset($_POST['selectCampus']))
@@ -99,12 +96,8 @@ class AccueilController extends AbstractController
                 $selectCampus=($_POST['selectCampus']);
                 $optionOther="selected=\"selected\"";
                 $optionUser="";
-
-                //////////////// Premier passage sur la page ////////////////
-            } else {
-                $selectCampus="Poitiers";
             }
-                $submit="submit";
+
            ////// RECHERCHE PAR MOT CLE //////////
             if (isset($_POST['search']) and $_POST['search']!="")
             {
@@ -136,13 +129,14 @@ class AccueilController extends AbstractController
                 $dateFin=$_POST['dateFin'];
             }
         }
+
+        ////////// PREMIER PASSAGE SUR LE SITE SANS AUCUNE SELECTION DU SEARCH ////////////////////////////////////
         if(!isset($_POST['organisateur']) and !isset($_POST['inscrit']) and !isset($_POST['pasInscrit']) and !isset($_POST['passees'])) {
 
-            //     $sorties = $sortieRepo->findAllByCampusDate($user->getCampus());
             $sorties2 = $sortieRepo->findAllByDateOrganisateur($userId);
             $sorties3 = $sortieRepo->findAllByDateInscrit($username, $sortiesAll);
             $sorties4 = $sortieRepo->findAllByDatePasInscrit($user, $sortiesAll);
-            $sorties5 = $sortieRepo->findNull($user->getCampus());
+            $sorties5 = $sortieRepo->findPasse($user->getCampus());
 
             $selectCampus="Poitiers";
             $organisateurCheck="checked=\"checked\"";
@@ -191,21 +185,13 @@ class AccueilController extends AbstractController
 
         if (isset($_POST['passees']))
         {
-            $sorties5 = $sortieRepo->findNull($user->getCampus());
+            $sorties5 = $sortieRepo->findPasse($user->getCampus());
             $passeesCheck="checked=\"checked\"";
             $passees="passees";
         }
         if($passees != "passees"){
             $sorties5 = null;
         }
-
-    //    $toutesSorties = $sorties + $sorties2 + $sorties3 + $sorties4 + $sorties5;
-
-    //    $sortieAfficher = array_unique($toutesSorties, SORT_REGULAR);
-
-        //// Récupérer la photo profil n°1 ///
-   //     $photoRepo = $this->getDoctrine()->getRepository(Photo::class);
-   //    $photo = $photoRepo->find(1);      "photo"=>$photo
 
         return $this->render('sortie/accueil.html.twig', [
              "sorties2" => $sorties2, "sorties3" =>$sorties3,"sorties4"=>$sorties4 , "sorties5"=>$sorties5,

@@ -107,7 +107,7 @@
 
             <tr><td class="sousTitre" colspan="10">Sorties Passée</td></tr>
             {% if (  passeesCheck  == "checked=\"checked\"") %}
-            {% for sortie in sorties5|filter(sortie=> dateDebut<sortie.dateHeure|date("Y-m-d") and dateFin>sortie.dateHeure|date("Y-m-d") ) %}
+            {% for sortie in sorties5 %}
                     {% include 'sortie/accueilBody.html.twig' %}
             {% endfor %}
             {% endif %}
