@@ -1,0 +1,19 @@
+{% extends 'layout.concours.html.twig'%}
+
+
+{%  block main %}
+
+    <!-- Parti uniquement visible sur smartphone -->
+<div class="d-block d-md-none">
+
+</div>
+    <!--Parti uniquement visible sur tablette et ordinateur -->
+
+    <!-- ////////////////////////  Filtre  ///////////////////////////////////-->
+
+<div id="divPhotoConcours">
+    <a href="{{ path('clients_inscription') }}"><img id="photoConcours" src="{{ asset('photos/Concours/PhotosConcours.png') }}" alt=""></a>
+</div>
+
+{% endblock %}
+{% block title %}Accueil{% endblock %}
